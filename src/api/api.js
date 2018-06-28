@@ -11,8 +11,7 @@ router.get('/', (req, res) => {
   res.statusMessage = 'OK';
 
   fs.readFile(__dirname + '/../../public/index.html', (err, data) => {
-    let message = `HOMEPAGE <br><br> access api by going  <a href='api/v1/pizza'>here`;
-    res.write(data.toString().replace('{{template}}', message));
+    res.write(data);
     res.end();
   });
 });
