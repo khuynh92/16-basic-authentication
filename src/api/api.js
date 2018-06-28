@@ -11,6 +11,7 @@ router.get('/', (req, res) => {
   res.statusMessage = 'OK';
 
   fs.readFile(__dirname + '/../../public/index.html', (err, data) => {
+    if(err) { throw err; }
     res.write(data);
     res.end();
   });
