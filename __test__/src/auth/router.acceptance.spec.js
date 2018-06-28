@@ -79,12 +79,10 @@ describe('auth module', () => {
 
     return supertest.post(SIGNUP_URI)
       .send(newUser)
-      .then((response) => {
-        let key = response.text;
+      .then(() => {
         return supertest.get(SIGNIN_URI)
           .auth('khoa', 'test')
           .then(res => {
-            expect(res.text).toEqual(key);
             expect(res.statusCode).toEqual(200);
           });
       });
